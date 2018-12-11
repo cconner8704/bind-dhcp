@@ -52,9 +52,9 @@ do
     rm -rf /var/lib/dhcp
     ln -sf ${DHCP_DATA_DIR}/lib /var/lib/dhcp
     chown -R root:dhcpd ${DHCP_DATA_DIR}/lib
-    touch ${DHCP_DATA_DIR}/lib/dhcp/dhcpd.leases
+    touch ${DHCP_DATA_DIR}/lib/dhcpd.leases
     touch /var/run/dhcpd.pid
-    chown root:dhcpd ${DHCP_DATA_DIR}/lib/dhcp/dhcpd.leases
+    chown root:dhcpd ${DHCP_DATA_DIR}/lib/dhcpd.leases
     IP="`ifconfig $INTERFACES | awk '/inet addr/{print substr($2,6)}'`"
     MASK="`ifconfig $INTERFACES | grep Mask | cut -d":" -f4`"
     sed -i '/INTERFACES*/c\INTERFACES="'$INTERFACES'"' /etc/default/isc-dhcp-server
