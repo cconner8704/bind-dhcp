@@ -26,5 +26,5 @@ RUN touch /var/log/syslog
 RUN chown syslog:adm /var/log/syslog
 
 VOLUME ["${DATA_DIR}"]
-EXPOSE 53/udp 53/tcp 547/udp 547/tcp 10000/tcp
+EXPOSE 53/udp 53/tcp 67/udp 67/tcp 68/udp 68/tcp 547/udp 547/tcp 10000/tcp
 ENTRYPOINT ["/sbin/entrypoint.sh"]
