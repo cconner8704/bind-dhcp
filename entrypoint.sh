@@ -77,7 +77,8 @@ sed -i "s|$NAMED_ORIG|$NAMED|g" /etc/supervisord.conf
 
 #  DHCPD="command=/usr/sbin/dhcpd "$INTERFACES" -pf /var/run/dhcpd.pid -f"
 DHCPD_ORIG="command=DHCPD"
-DHCPD="command=/usr/sbin/dhcpd -user dhcpd -group dhcpd -f -4 -pf /var/run/dhcpd.pid -cf /etc/dhcp/dhcpd.conf"
+#DHCPD="command=/usr/sbin/dhcpd -user dhcpd -group dhcpd -f -4 -pf /var/run/dhcpd.pid -cf /etc/dhcp/dhcpd.conf"
+DHCPD="command=/usr/sbin/dhcpd -user dhcpd -group dhcpd -f -4 --no-pid -cf /etc/dhcp/dhcpd.conf"
 sed -i "s|$DHCPD_ORIG|$DHCPD|g" /etc/supervisord.conf
 
 exec /usr/bin/supervisord -c /etc/supervisord.conf
