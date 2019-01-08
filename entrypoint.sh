@@ -60,7 +60,7 @@ do
     sed -i "s^INTERFACES.*^INTERFACES=\"${INTERFACES}\"^g" /etc/default/isc-dhcp-server
     echo -e '\nlocal7.*\t\t/var/log/dhcp' >> /etc/rsyslog.d/50-default.conf
     DHCP_IP=$(ifconfig -a | grep ${DHCP_SUBNET} | awk '{print $2}')
-    sed -i "s^local-address.*^local-address ${DHCP_PI};^g" /etc/dhcp/dhcpd.conf
+    sed -i "s^local-address.*^local-address ${DHCP_IP};^g" /etc/dhcp/dhcpd.conf
   fi
 done
 
