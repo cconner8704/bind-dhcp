@@ -57,7 +57,10 @@ do
     chown root:dhcpd ${DHCP_DATA_DIR}/lib/dhcpd.leases
     IP="`ifconfig $INTERFACES | awk '/inet addr/{print substr($2,6)}'`"
     MASK="`ifconfig $INTERFACES | grep Mask | cut -d":" -f4`"
-    sed -i '/INTERFACES*/c\INTERFACES="'$INTERFACES'"' /etc/default/isc-dhcp-server
+    sed -i "s^INTERFACES.*^INTERFACES=\"${INTERFACES}\"^g" /etc/default/isc-dhcp-server
+    echo -e '\nlocal7.*\t\t/var/log/dhcp' >> /etc/rsyslog.d/50-default.conf
+    DHCP_IP=$(ifconfig -a | grep ${DHCP_SUBNET} | awk '{print $2}')
+    sed -i "s^local-address.*^local-address ${DHCP_PI};^g" /etc/dhcp/dhcpd.conf
   fi
 done
 
