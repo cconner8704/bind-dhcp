@@ -1,8 +1,8 @@
-FROM ubuntu:artful
+FROM ubuntu:bionic
 MAINTAINER chrism.conner@gmail.com
 
 ENV BIND_USER=bind \
-    BIND_VERSION=1:9.10.3 \
+    BIND_VERSION=1:9.11.3 \
     WEBMIN_VERSION=1.9 \
     DATA_DIR=/data \
     INTERFACES= \
