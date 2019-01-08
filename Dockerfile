@@ -10,7 +10,7 @@ ENV BIND_USER=bind \
 
 RUN rm -rf /etc/apt/apt.conf.d/docker-gzip-indexes \
  && apt-get update \
- && apt-get install -y rsyslog supervisor nano vim zsh wget dnsutils lnav \
+ && apt-get install -y rsyslog supervisor nano vim zsh wget dnsutils lnav gnupg2 \
  && wget http://www.webmin.com/jcameron-key.asc -qO - | apt-key add - \
  && echo "deb http://download.webmin.com/download/repository sarge contrib" >> /etc/apt/sources.list \
  && apt-get update \
